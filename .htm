@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambi Tracker - Educational Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: normal;
+        }
+        nav {
+            margin: 1em 0;
+            text-align: center;
+        }
+        nav button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 1em;
+            cursor: pointer;
+            margin: 0 0.5em;
+            font-size: 1em;
+        }
+        .section {
+            padding: 1em;
+        }
+        .hidden {
+            display: none;
+        }
+        .scrollable {
+            max-height: 200px;
+            overflow-y: scroll;
+        }
+        .aptitude-question {
+            margin: 1em 0;
+        }
+        .timer {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ambi Tracker</h1>
+        <h2>Where Passion Meets Profession</h2>
+    </header>
+    <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('about-us')">About Us</button>
+        <button onclick="showSection('counsellors')">Counsellors</button>
+        <button onclick="showSection('sign-in')">Sign In</button>
+    </nav>
+    <div id="home" class="section">
+        <h2>Welcome to Ambi Tracker</h2>
+        <p>Your path to a fulfilling career starts here!</p>
+    </div>
+    <div id="about-us" class="section hidden">
+        <h2>About Us</h2>
+        <p>Welcome to Ambi-Tracker<br>
+        At Ambi-Tracker, we believe that every individual has the potential to achieve great things when they find the right path. Our mission is to guide you through your career journey, helping you make informed decisions that align with your passions, strengths, and goals.<br><br>
+
+        <strong>Who are we?</strong><br>
+        Ambi-Tracker is a team of dedicated career counselors, industry experts, and educational professionals committed to providing personalized guidance and support. With years of experience in career counseling, we have helped countless individuals discover their true potential and achieve their professional aspirations.<br><br>
+
+        <strong>Our mission</strong><br>
+        Our mission is to empower individuals by providing the tools, resources, and insights they need to navigate their career paths successfully. We strive to make career planning a seamless and enriching experience, ensuring that our clients are equipped to make confident and informed decisions about their future.<br><br>
+
+        <strong>Our Services</strong><br>
+        <ul>
+            <li>Career Assessments: Evaluate your interests, strengths, and personality traits to identify suitable career options.</li>
+            <li>Personalized Counseling Sessions: One-on-one sessions with our experienced counselors to discuss your career goals and develop a customized action plan.</li>
+            <li>Educational Guidance: Assistance with selecting appropriate courses, colleges, and training programs to enhance your career prospects.</li>
+        </ul><br>
+
+        <strong>Why Choose Us?</strong><br>
+        <ul>
+            <li>Expertise: Our team consists of certified career counselors and professionals with extensive experience in various industries.</li>
+            <li>Personalized Approach: We understand that each individual is unique, and we tailor our services to meet your specific needs.</li>
+            <li>Cost Efficient: We are affordable and cost worthy.</li>
+        </ul><br>
+
+        <strong>Get in Touch</strong><br>
+        Ready to take the next step in your career? Contact us today to schedule a consultation and start your journey with Ambi-Tracker. Together, we can turn your passions into a fulfilling and successful career.</p>
+    </div>
+    <div id="counsellors" class="section hidden scrollable">
+        <h2>Counsellors</h2>
+        <img src="/mnt/data/WhatsApp Image 2024-07-17 at 14.52.38.jpeg" alt="Counsellors Image">
+        <p>Our counsellors are experienced professionals dedicated to guiding you through your career journey.</p>
+    </div>
+    <div id="sign-in" class="section hidden">
+        <h2>Sign In</h2>
+        <button onclick="showGoogleSignIn()">Sign in with Google</button>
+        <div id="google-sign-in" class="hidden">
+            <p>Google Sign-In Process...</p>
+            <button onclick="showSection('payment')">Next</button>
+        </div>
+    </div>
+    <div id="payment" class="section hidden">
+        <h2>Payment</h2>
+        <p>Proceed to pay 1300 jumbos for career counselling.</p>
+        <select id="career-counselling-dropdown">
+            <option value="career-counselling">Proceed towards Career Counselling</option>
+        </select>
+        <button onclick="showSection('proceedings')">Proceed</button>
+    </div>
+    <div id="proceedings" class="section hidden">
+        <h2>Proceedings</h2>
+        <button onclick="showScheduleMeeting()">Schedule Meeting</button>
+        <button onclick="showCheckInterest()">Check Your Interest</button>
+        <button onclick="showPlayGames()">Play Games</button>
+        <div id="schedule-meeting" class="hidden">
+            <p>Schedule the timing for your meeting:</p>
+            <input type="time" id="meeting-time">
+            <button onclick="proceed()">Proceed</button>
+        </div>
+        <div id="check-interest" class="hidden">
+            <button onclick="startAptitudeTest()">Start Aptitude Test</button>
+        </div>
+        <div id="play-games" class="hidden">
+            <p>Enjoy some educational games!</p>
+        </div>
+    </div>
+    <div id="aptitude-test" class="section hidden">
+        <div class="timer" id="timer">15:00</div>
+        <h2>Aptitude Test</h2>
+        <div id="question-1" class="aptitude-question">
+            <p>Evaluate the integral \(\int_0^1 (3x^2 + 2x + 1) \, dx\).</p>
+            <input type="radio" name="question-1" value="a"> \(\frac{11}{3}\)<br>
+            <input type="radio" name="question-1" value="b"> \(\frac{7}{3}\)<br>
+            <input type="radio" name="question-1" value="c"> \(\frac{5}{3}\)<br>
+            <input type="radio" name="question-1" value="d"> \(\frac{4}{3}\)<br>
+            <button onclick="showNextQuestion(2)">Next</button>
+        </div>
+        <div id="question-2" class="aptitude-question hidden">
+            <p>A particle is executing simple harmonic motion with an amplitude of 5 cm and a time period of 0.2 s. Calculate its maximum velocity.</p>
+            <input type="radio" name="question-2" value="a"> 1.57 m/s<br>
+            <input type="radio" name="question-2" value="b"> 2.5 m/s<br>
+            <input type="radio" name="question-2" value="c"> 0.25 m/s<br>
+            <input type="radio" name="question-2" value="d"> 0.5 m/s<br>
+            <button onclick="showNextQuestion(3)">Next</button>
+        </div>
+        <div id="question-3" class="aptitude-question hidden">
+            <p>Which of the following is the correct IUPAC name for \(CH_3-CH_2-CH(OH)-CH_3\)?</p>
+            <input type="radio" name="question-3" value="a"> 2-Butanol<br>
+            <input type="radio" name="question-3" value="b"> 1-Butanol<br>
+            <input type="radio" name="question-3" value="c"> 2-Methyl-2-propanol<br>
+            <input type="radio" name="question-3" value="d"> 1-Propanol<br>
+            <button onclick="endAptitudeTest()">Finish</button>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function showGoogleSignIn() {
+            document.getElementById('google-sign-in').classList.remove('hidden');
+        }
+
+        function showScheduleMeeting() {
+            document.getElementById('schedule-meeting').classList.remove('hidden');
+        }
+
+        function showCheckInterest() {
+            document.getElementById('check-interest').classList.remove('hidden');
+        }
+
+        function showPlayGames() {
+            document.getElementById('play-games').classList.remove('hidden');
+        }
+
+        function startAptitudeTest() {
+            showSection('aptitude-test');
+            startTimer(15, document.getElementById('timer'));
+        }
+
+        function showNextQuestion(questionNumber) {
+            document.querySelectorAll('.aptitude-question').forEach(q => q.classList.add('hidden'));
+            document.getElementById('question-' + questionNumber).classList.remove('hidden');
+        }
+
+        function endAptitudeTest() {
+            alert('Aptitude test completed!');
+            showSection('home');
+        }
+
+        function startTimer(duration, display) {
+            let timer = duration * 60, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    alert('Time is up!');
+                    endAptitudeTest();
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
